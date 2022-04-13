@@ -8,13 +8,22 @@ import getData from './utils/apiData';
 function App() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+  const [filteredOption, setFilteredOption] = useState('artists');
 
   useEffect(() => {
-    getData(search).then((response) => setData(response.data.artists.items));
+    if (search) {
+      getData(search).then((response) => {
+        setData(response.data);
+      });
+    }
   }, [search]);
 
   const getSearch = (searchItem) => {
     setSearch(searchItem.trim());
+  };
+
+  const getFilter = (filter) => {
+    setFilteredOption(filter);
   };
 
   return (
@@ -22,9 +31,12 @@ function App() {
       <h1>Muscape Search</h1>
       <h3>Enter search term</h3>
       <Search getSearch={getSearch} />
-      <Selection />
-      {console.log(data)}
-      <Cards artists={data} />
+      <Selection getFilter={getFilter} />
+      {data.length !== 0 ? (
+        <Cards data={data} filterOption={filteredOption} />
+      ) : (
+        <h1>...</h1>
+      )}
     </div>
   );
 }
