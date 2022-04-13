@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 function Card({ artist }) {
-  console.log(artist);
   const {
     name,
     images,
