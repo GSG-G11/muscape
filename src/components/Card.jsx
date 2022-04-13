@@ -1,12 +1,7 @@
 import PropTypes from 'prop-types';
 
 function Card({ artist }) {
-  const {
-    name,
-    images,
-    external_urls: url
-    //  genres
-  } = artist;
+  const { name, images, external_urls: url } = artist;
   return (
     artist && (
       <div className="card">
@@ -15,14 +10,11 @@ function Card({ artist }) {
             src={
               images.length >= 2
                 ? images[1].url
-                : 'https://i.scdn.co/image/ab676161000051745464c6450a88d073a3f117b0'
+                : 'https://media.istockphoto.com/vectors/music-note-icon-vector-illustration-vector-id1175435360?k=20&m=1175435360&s=612x612&w=0&h=1yoTgUwobvdFlNxUQtB7_NnWOUD83XOMZHvxUzkOJJs='
             }
             alt=""
           />
           <p className="card_Name">{name}</p>
-          {/* {genres.slice(0, 2).map((genre) => (
-          <small className="genre">{genre}</small>
-        ))} */}
         </a>
       </div>
     )
