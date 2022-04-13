@@ -1,15 +1,22 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 function Search({ getSearch }) {
-  const handleSearch = (event) => {
+  const [search, setSearch] = useState('');
+
+  const handleChange = (event) => {
     const { value } = event.target;
-    return getSearch(value);
+    setSearch(value);
   };
+
+  const handleSearch = () => getSearch(search);
 
   return (
     <div className="search_header">
-      <input type="text" onChange={handleSearch} />
-      <button type="button">Search</button>
+      <input type="text" onChange={handleChange} value={search} />
+      <button type="button" onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 }
