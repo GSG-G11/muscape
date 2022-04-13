@@ -96,3 +96,7 @@ ul {
 .genre {
   font-size: 12px;
 }
+.card_Name {
+  max-width:250px;
+  word-wrap:break-word;
+}
