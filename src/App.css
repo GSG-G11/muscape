@@ -70,3 +70,27 @@ ul {
   border: 2px solid #778298;
   border-radius: 5px;
 } */
+.artists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 1rem;
+  box-shadow: 0 2px 7px 3px #949ca5;
+  background-color: white;
+}
+
+.card img {
+  max-width: 250px;
+  height: 250px;
+}
+
+.card .card-image-link {
+  padding: 1rem;
+  text-align: center;
+}
+.card{
+  text-align: center;
+}
