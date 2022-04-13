@@ -16,7 +16,7 @@ body {
   letter-spacing: 1px;
   color: #778298;
 }
-.search_header {
+genre .search_header {
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +28,6 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  width: 10%;
   height: 50px;
   cursor: pointer;
   background-color: #05a2b7;
@@ -91,6 +90,9 @@ ul {
   padding: 1rem;
   text-align: center;
 }
-.card{
+.card {
   text-align: center;
+}
+.genre {
+  font-size: 12px;
 }
