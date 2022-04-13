@@ -4,15 +4,19 @@ import Search from './components/Search';
 import Selection from './components/Selection';
 import Cards from './components/Cards';
 import getData from './utils/apiData';
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredOption, setFilteredOption] = useState('artists');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (search) {
+      setLoading(true);
       getData(search).then((response) => {
+        setLoading(false);
         setData(response.data);
       });
     }
@@ -32,11 +36,8 @@ function App() {
       <h3>Enter search term</h3>
       <Search getSearch={getSearch} />
       <Selection getFilter={getFilter} />
-      {data.length !== 0 ? (
-        <Cards data={data} filterOption={filteredOption} />
-      ) : (
-        <h1>...</h1>
-      )}
+      {loading && <LoadingSpinner />}
+      {data.length !== 0 ? <Cards data={data} filterOption={filteredOption} /> : <h1>...</h1>}
     </div>
   );
 }
