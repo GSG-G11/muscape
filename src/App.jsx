@@ -1,6 +1,9 @@
 import './App.css';
+import { useState } from 'react';
+import Search from './components/Search';
+import Selection from './components/Selection';
+import Cards from './components/Cards';
 // import axios from 'axios';
-// import { useEffect, useState } from 'react';
 
 function App() {
   // const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
@@ -8,7 +11,7 @@ function App() {
 
   // const [token, setToken] = useState('');
   // const [artists, setArtists] = useState([]);
-  // const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('');
 
   // useEffect(() => {
   //   console.log('Running');
@@ -32,66 +35,17 @@ function App() {
   //     }).then((artistsResponse) => setArtists(artistsResponse.data.artists.items));
   //   });
   // }, [search]);
+  const getSearch = (searchItem) => {
+    setSearch(searchItem.trim());
+  };
 
-  // const handleSearch = (event) => {
-  //   const { value } = event.target;
-  //   setSearch(value);
-  // };
   return (
     <div className="App">
       <h1>Muscape Search</h1>
       <h3>Enter search term</h3>
-      <div className="search_header">
-        <input type="text" />
-        <button type="button">Search</button>
-      </div>
-      <ul>
-        <li>
-          <button className="nav_button" type="button" id="selected_button">
-            Albums
-          </button>
-        </li>
-        <li>
-          <button className="nav_button" type="button">
-            Artists
-          </button>
-        </li>
-        <li>
-          <button className="nav_button" type="button">
-            Playlists
-          </button>
-        </li>
-      </ul>
-      <div className="artists">
-        <div className="card">
-          <img src="https://i.scdn.co/image/ab676161000051749d3f9efc8e0030306e583cef" alt="Error" />
-          <p>Justin Temperlake</p>
-          <p>Justin Temperlake</p>
-          <small>classic</small>
-          <small>pop</small>
-        </div>
-        <div className="card">
-          <img src="https://i.scdn.co/image/ab676161000051749d3f9efc8e0030306e583cef" alt="Error" />
-          <p>Justin Temperlake</p>
-          <p>Justin Temperlake</p>
-          <small>classic</small>
-          <small>pop</small>
-        </div>
-        <div className="card">
-          <img src="https://i.scdn.co/image/ab676161000051748ae7f2aaa9817a704a87ea36" alt="Error" />
-          <p>Justin Temperlake</p>
-          <p>Justin Temperlake</p>
-          <small>classic</small>
-          <small>pop</small>
-        </div>
-        <div className="card">
-          <img src="https://i.scdn.co/image/ab676161000051748ae7f2aaa9817a704a87ea36" alt="Error" />
-          <p>Justin Temperlake</p>
-          <p>Justin Temperlake</p>
-          <small>classic</small>
-          <small>pop</small>
-        </div>
-      </div>
+      <Search getSearch={getSearch} />
+      <Selection />
+      <Cards />
     </div>
   );
 }
